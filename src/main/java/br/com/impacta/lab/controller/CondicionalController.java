@@ -1,10 +1,13 @@
 package br.com.impacta.lab.controller;
 
+import org.dom4j.IllegalAddException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import ch.qos.logback.core.joran.conditional.ElseAction;
 
 @RestController
 @RequestMapping("/atividades")
@@ -24,9 +27,11 @@ public class CondicionalController {
 		 *  Para menores de dezoito anos -> Possui menos de 18 anos
 		 *  
 		 */
+
+		 //http://localhost8080/atividades/hello?idade=18 - Para testar
 		
-		
-		return ResponseEntity.ok("APÓS O ALGORITMO COLOCAR O TEXTO/VARIAVEL DE RETORNO AQUI");
+		   
+		return ResponseEntity.ok(idade >= 18 ? "Possui mais de 18 anos" : "Possui menos de 18 anos");
 	}
 	
 }
